@@ -1,0 +1,7 @@
+Stopped copy-pasting text to ChatGPT on my phone.
+
+Switched to an AI-native keyboard instead. The model sits right in the input field — hold a key, describe what I want, and it rewrites, translates, or expands in place.
+
+The friction was invisible until it disappeared. Copy → switch app → paste → read → copy result → switch back → paste again. Dozens of times a day.
+
+One less context switch. Same result.
