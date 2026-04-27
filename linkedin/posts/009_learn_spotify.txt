@@ -1,0 +1,7 @@
+Just realized you can control Spotify using DBus on Linux — like skipping to the next track with a simple command!
+
+I had no idea this was even possible, but now I’ve mapped it to a keyboard shortcut, and it’s such a game-changer. No more alt-tabbing or fumbling with the mouse — just seamless control straight from the keyboard. 🎧⚡
+
+Sometimes it’s the small tweaks that make a big difference.
+
+Anyone else automating their music or apps like this?

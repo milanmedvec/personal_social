@@ -1,0 +1,9 @@
+If AGI truly emerges, what happens to everything we’re building today — the MCP integrations, workflows, and domain-specific AI agents?
+
+Do they become obsolete overnight?
+
+Or do they evolve into the scaffolding AGI uses to interact with tools, APIs, and the world?
+
+I’d love to hear different perspectives.
+
+https://zenodo.org/records/10591677

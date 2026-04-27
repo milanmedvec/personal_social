@@ -1,0 +1,14 @@
+I want to continue sharing more about how I work — not just what I build.
+
+Today I want to share how I’m using runc containers to isolate processes per project.
+
+No Docker, no overlays — just:
+- project directory
+- isolated process
+- minimal config
+
+Simple, fast, and fully under control.
+
+More details (and code) in the comments 👇
+
+Curious — how are you isolating AI-generated code?

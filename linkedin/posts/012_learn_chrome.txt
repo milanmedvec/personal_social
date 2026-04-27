@@ -1,0 +1,12 @@
+🚀 Tweak your Chrome experience with command‑line switches
+I recently stumbled upon this excellent list of Chrome/Chromium command‑line switches curated by Peter Beverloo:
+
+| https://peter.sh/experiments/chromium-command-line-switches/
+
+One switch I’m particularly excited about is:
+`--app=<URL>`
+
+📄 Specification: “Specifies that the associated value should be launched in ‘application’ mode.” — peter.sh
+
+🔍 What this does:
+Launches Chrome with a given URL as a standalone “app” window — no address bar, no tabs, no minimal size - just minimal UI chrome. The web page behaves more like a native application window — Combine this with floating mode in the i3 window manager, and it becomes a powerful setup.

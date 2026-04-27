@@ -1,0 +1,92 @@
+Control Spotify from the Linux terminal with DBus (MPRIS)
+
+I love tiny workflows that remove friction. One of the most satisfying ones I’ve added recently: skip Spotify tracks straight from the terminal (and then map it to a keyboard shortcut so I never have to alt-tab again).
+
+If you’re on Linux and Spotify is running, you can talk to it over DBus using the MPRIS interface (a common media-control spec supported by many players).
+
+
+
+The two commands
+
+These are the raw DBus calls for previous/next track:
+
+# Previous track
+dbus-send --print-reply \
+  --dest=org.mpris.MediaPlayer2.spotify \
+  /org/mpris/MediaPlayer2 \
+  org.mpris.MediaPlayer2.Player.Previous
+
+# Next track
+dbus-send --print-reply \
+  --dest=org.mpris.MediaPlayer2.spotify \
+  /org/mpris/MediaPlayer2 \
+  org.mpris.MediaPlayer2.Player.Next
+
+
+That’s it. No SDK, no OAuth, no browser automation. Just a message on the session bus.
+
+
+
+What’s happening under the hood
+
+DBus is a message bus used for IPC on Linux desktops.
+
+Spotify exposes an object at:
+
+
+
+
+
+Service name: org.mpris.MediaPlayer2.spotify
+
+
+
+Object path: /org/mpris/MediaPlayer2
+
+
+
+Interface: org.mpris.MediaPlayer2.Player
+
+
+
+Methods: Next, Previous, (and also PlayPause, Play, Pause, etc.)
+
+So the commands above are simply “call method Next / Previous on Spotify’s MPRIS player object”.
+
+
+
+Make it ergonomic: aliases
+
+I like turning those long commands into something muscle-memory friendly:
+
+alias sp_next='dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next'
+alias sp_prev='dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous'
+
+
+Then:
+
+sp_next
+sp_prev
+
+
+
+
+Keyboard shortcuts (where this becomes “sticky”)
+
+The real win is binding these to keys.
+
+i3 / sway example
+
+In your config:
+
+bindsym $mod+bracketleft exec --no-startup-id sp_prev
+bindsym $mod+bracketright exec --no-startup-id sp_next
+
+
+(Use whatever key combo fits your layout.)
+
+A small workflow note
+
+This kind of tweak fits exactly the sort of thing I like sharing here: small, concrete, high-leverage habits that compound over time.
+
+If you end up mapping this to shortcuts, I’m curious: what keys did you choose, and do you also automate volume, play/pause, or “like” actions?

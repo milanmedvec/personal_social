@@ -1,0 +1,19 @@
+🚀 Exploring AdGuard DNS: An Interesting Alternative to Traditional Ad Blockers
+
+I’ve never been a supporter of browser-based ad-block extensions. But after installing a new OS recently, I decided to experiment with AdGuard DNS as a simple way to filter unwanted content at the network level.
+
+After a month of using it, I have to admit—it's a very interesting approach. It keeps things clean without needing any extensions, and the browsing experience feels noticeably lighter.
+
+However, I’ve run into an unexpected issue:
+Some websites detect that I’m “using an ad blocker” and block access to their content… even though I’m not actually running any ad-block extension.
+
+💡 This raises a question:
+If I don’t have an ad-blocking feature enabled, but DNS filtering prevents certain elements from loading, is the result effectively the same as traditional ad blocking?
+
+Curious to hear how others think about DNS filtering vs. dedicated ad blockers.
+Is DNS-level filtering becoming the new “silent ad blocker”?
+
+#dns #adblock #internetprivacy
+
+dns.adguard.com
+

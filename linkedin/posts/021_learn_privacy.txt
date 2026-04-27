@@ -1,0 +1,10 @@
+🔒 A small note about privacy
+
+I just installed new software, and it greeted me with “Hi Milan!” — even though I never shared my name with it.
+
+Turns out, it silently pulled the info from my .gitconfig.
+
+Friendly? Maybe.
+Transparent? Not at all.
+
+It makes me wonder how many tools do this quietly in the background.

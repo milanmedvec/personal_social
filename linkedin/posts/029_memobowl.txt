@@ -1,0 +1,18 @@
+After sharing my thoughts about information overload recently, I started exploring tools and technologies that approach this problem from different angles.
+
+There are some really interesting projects in the knowledge / AI space right now:
+
+• Obsidian – personal knowledge graphs and linked notes
+• NotebookLM – AI-assisted research and document understanding, which is very powerful, especially with `notebooklm-py` – an unofficial Python API
+• Logseq – open-source PKM with graph linking
+• Tana – AI-native knowledge graph
+• Heptabase – whiteboard + knowledge graph
+• Mem – AI organizes notes automatically
+
+Each of these solves a piece of the puzzle.
+
+What I find fascinating is how these ideas might combine into something that helps people manage knowledge more intelligently — not just store more information.
+
+Still exploring and experimenting.
+
+If you're working with tools in this space, I’d love to hear what you’re using.

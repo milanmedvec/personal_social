@@ -1,0 +1,3 @@
+At the AI gear project, we’ve been working on more than just AI assistants — we’ve also been building some really cool AI-powered chatbots. I’m happy to say that the experience I gained there was useful when I got the chance to help out with the new LubBot project for SKF Group.
+
+https://lubbot.azurewebsites.net/

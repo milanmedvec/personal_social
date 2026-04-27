@@ -1,0 +1,5 @@
+word2vec, the classic NLP tool created by Tomas Mikolov and his team at Google back in 2013, is still online and totally usable - dataset, training phase, everything.
+
+What’s wild is that this little program helped kick off the path toward today’s big LLMs… and it’s only a few hundred lines of super readable C code. It’s kind of amazing how something so small had such a big impact.
+
+If you’re into AI or just curious about where modern language models came from, it’s definitely worth checking out.

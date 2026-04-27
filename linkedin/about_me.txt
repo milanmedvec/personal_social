@@ -1,0 +1,20 @@
+I am a T-shaped software architect with 12+ years of experience delivering complex software systems - from embedded/edge computing to cloud platforms and full-stack applications.
+
+My vertical expertise lies in AI-enabled distributed systems, real-time data processing and edge/cloud integration. I have built agents for embedded devices, high-performance backends, and autonomous AI workflows.
+
+My horizontal skillset covers:
+• Full-stack engineering (C/C++, Rust, Python, TS/JS, Node, React, Next.js, …)
+• System architecture & technical design
+• AI integration and automation
+• Industry 4.0 digital transformation
+• Product development and early-stage startup building
+
+I co-founded AI gear where I served as CTO and worked on autonomous AI employees. I previously spent two years at Luxonis (USA) building edge-AI agents and cloud infrastructure for real-time vision processing. I also led my own software company delivering custom systems, integrations and automation for companies across Europe.
+
+What motivates me today:
+• designing robust architectures
+• solving difficult technical challenges
+• building high-leverage AI systems
+• collaborating with strong senior engineers
+
+Looking for opportunities where I can combine deep technology, system design, AI and product thinking - with real business impact.

@@ -1,0 +1,53 @@
+How I Launch It
+
+I run Chrome:
+
+
+
+
+
+inside a systemd user scope
+
+
+
+with a 500 MB memory limit
+
+
+
+wrapped in a tmux session
+
+
+
+with a clean, dedicated profile
+
+Roughly:
+
+
+
+
+
+Nothing fancy — just combining simple Linux primitives.
+
+
+
+Why?
+
+1️⃣ Memory Boundaries
+
+Chrome can consume as much RAM as you give it.
+A hard limit keeps the system responsive and forces discipline.
+
+2️⃣ Ephemeral State
+
+A fresh profile means no accumulated clutter, no extension drift, no hidden slowdowns.
+
+3️⃣ Process Control
+
+Wrapping it in tmux makes it intentional.
+Attach. Detach. Restart. Manage sessions explicitly.
+
+
+
+Note: If you’re curious about other Chrome/Chromium command-line arguments, this is the best reference I’ve found:
+
+https://peter.sh/experiments/chromium-command-line-switches/

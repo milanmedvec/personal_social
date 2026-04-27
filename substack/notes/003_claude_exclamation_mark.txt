@@ -1,0 +1,9 @@
+Today I was years old when I learned this.
+
+In Claude Code (and Codex), you can run raw bash commands directly from the prompt — just prefix with `!`.
+
+! ls
+! git status
+! docker ps
+
+No need to leave the chat or open a separate terminal. It's a small thing, but once you know it, you use it constantly.

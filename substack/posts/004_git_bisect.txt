@@ -1,0 +1,43 @@
+There’s something deeply satisfying about turning a messy debugging session into a deterministic process.
+
+Recently, I had to track down a bug that “appeared sometime last week.” The codebase had dozens of commits since the last known good state. Manually scanning diffs would’ve been painful.
+
+
+
+Thanks for reading! Subscribe for free to receive new posts and support my work.
+
+So I finally leaned properly into git bisect.
+
+If you haven’t used it: it’s basically binary search over your commit history.
+
+You mark:
+
+
+
+
+
+one commit as good
+
+
+
+one commit as bad
+
+Git then checks out the midpoint. You test. Mark good or bad. Repeat.
+
+In ~log₂(n) steps, you land exactly on the commit that introduced the bug.
+
+No guesswork.
+No emotions.
+Just math.
+
+What I love about tools like this is that they encode engineering discipline into the workflow. They reduce debugging from “intuition and memory” to a controlled experiment.
+
+It’s a small reminder that version control isn’t just about collaboration — it’s also a time machine with a search algorithm built in.
+
+If you’ve never used git bisect, try it the next time you hit a regression.
+
+It might permanently change how you debug.
+
+
+
+Thanks for reading! Subscribe for free to receive new posts and support my work.

@@ -1,0 +1,13 @@
+🚀 New Project, New Setup, New Energy 💻🌱
+
+After wrapping up my last project, I decided it's the perfect time to refresh my development environment. I'm leaving behind my trusty setup (Linux Mint + Cinnamon + VSCode) and diving into something more minimal, flexible, and fully under my control:
+
+🆕 Arch Linux + i3 + Neovim
+
+Why the change? Because I believe the tools you use should grow with you.
+
+This new setup is fast, lightweight, and fits the way I like to work. It’s not just about looks or personal taste — it’s about being more focused and intentional with my tools.
+
+🌐 If you’ve ever considered switching to a more minimal/dev-centric environment, I’m happy to share configs, tips, and lessons learned along the way.
+
+💬 What’s your dev setup right now? Have you made any big changes recently?

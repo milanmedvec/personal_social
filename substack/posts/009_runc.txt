@@ -1,0 +1,316 @@
+I built this container manager because I don’t want a Docker-like workflow when I just need simple process isolation per project.
+
+In most cases, I don’t need:
+
+
+
+Thanks for reading! Subscribe for free to receive new posts and support my work.
+
+
+
+
+
+image layering
+
+
+
+registries
+
+
+
+overlay filesystems
+
+
+
+background daemons
+
+What I want is much simpler:
+
+
+
+Take my project directory, isolate it, and run it in a controlled environment.
+
+That’s it.
+
+
+
+
+
+
+
+Core idea
+
+The tool (cm) is a thin wrapper around runc, with a very simple structure:
+
+~/.local/share/cm/
+  <project>/
+    <bundle>/
+      rootfs/
+      config.json
+
+
+
+
+
+
+Project = current directory name
+
+
+
+Bundle = container definition
+
+
+
+rootfs = extracted filesystem (Debian)
+
+
+
+config.json = OCI spec
+
+No abstractions beyond what runc already expects.
+
+
+
+Why this approach
+
+Instead of building images and layering filesystems, I:
+
+
+
+
+
+keep my project on the host filesystem
+
+
+
+bind-mount it into the container
+
+
+
+run everything directly against it
+
+No overlay, no copy, no sync step.
+
+"destination": "/project",
+"type": "none",
+"source": $src,
+"options": ["rbind", "rw"]
+
+
+This makes the container behave like a lightweight sandbox around the current working directory.
+
+
+
+Creating a bundle
+
+cm create [subname]
+
+
+This does a few things:
+
+
+
+
+
+Creates the bundle directory
+
+
+
+Exports a minimal Debian root filesystem
+
+
+
+Generates a rootless OCI config
+
+
+
+Patches it for actual use
+
+The rootfs is created like this:
+
+cid=$(docker create debian:latest)
+docker export "$cid" | tar -C "$bundle/rootfs" -xf -
+docker rm "$cid"
+
+
+Docker is only used here as a convenient way to fetch a base filesystem.
+
+
+
+Making the container usable
+
+Raw runc spec isn’t enough, so I patch it:
+
+
+
+
+
+working directory → /project
+
+
+
+bind mount current directory
+
+
+
+enable writeable rootfs
+
+
+
+define UID/GID mappings
+
+
+
+set minimal capabilities
+
+.process.cwd = "/project"
+
+
+This turns the container into a usable dev/runtime environment.
+
+
+
+Running containers
+
+cm run [subname] --memory 512m
+
+
+Each run:
+
+
+
+
+
+generates a unique container ID
+
+
+
+optionally applies memory limits
+
+
+
+executes via runc
+
+Memory limits are injected dynamically:
+
+.linux.resources.memory.limit = $limit
+
+
+If a limit is used, a temporary bundle is created on the fly.
+
+
+
+Cleanup
+
+cm delete
+cm delete <project>
+cm delete <project> <bundle>
+
+
+Before deleting anything, the tool:
+
+
+
+
+
+finds related containers
+
+
+
+stops them if needed
+
+
+
+removes them cleanly
+
+No leftover state.
+
+
+
+Design decisions
+
+No overlay filesystem
+
+I don’t need layered filesystems for my use case.
+
+The project directory is the source of truth, and the container just wraps it.
+
+
+
+Rootless by default
+
+Everything runs in user space:
+
+{"containerID": 0, "hostID": 1000, "size": 1}
+
+
+No daemon, no elevated privileges.
+
+
+
+Minimal surface area
+
+This tool intentionally avoids:
+
+
+
+
+
+networking abstractions
+
+
+
+image management
+
+
+
+orchestration
+
+It’s just:
+
+
+
+filesystem + config + process
+
+
+
+What this enables
+
+
+
+
+
+per-project isolation without Docker overhead
+
+
+
+running code in a clean environment instantly
+
+
+
+simple, reproducible execution
+
+
+
+experimentation with OCI without extra layers
+
+
+
+Final thoughts
+
+This approach strips containers down to what I actually need.
+
+No images, no overlays, no orchestration—just a controlled environment around a directory.
+
+It’s closer to how containers work underneath, and in many cases, that’s enough.
+
+
+
+Source
+
+You can check out the full implementation here:
+https://github.com/milanmedvec/workspace_archlinux_cm
+
+
+
+Thanks for reading! Subscribe for free to receive new posts and support my work.

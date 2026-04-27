@@ -1,0 +1,13 @@
+🧑‍💻 Not a “vibe coder,” but I love what vibe coding makes possible
+
+I’ll admit it — I’m not the kind of developer who enjoys coding for the sake of coding. I don’t really get into the “vibe coding” flow where people just code endlessly for fun.
+
+But what I do love is seeing what can be built with that kind of creative energy. When you can go from an idea to a working project in just a few hours — that’s the part that excites me.
+
+Recently, I teamed up with Claude and put together a small web service in just a few hours. It automatically generates a calendar with matches from the Champions League, Europa League, and other tournaments.
+
+It’s simple, but it’s useful — and that’s what I love about this kind of work: quick ideas, real functionality, and instant results.
+
+⚙️ Sometimes, it’s not about writing perfect code — it’s about building something that makes people’s lives a little easier.
+
+https://football-calendar.milanmedvec.cz/

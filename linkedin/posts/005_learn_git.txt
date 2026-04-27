@@ -1,0 +1,7 @@
+I was today years old when I used `git bisect` for the first time.
+
+Despite working with Git daily for over a decade, I had never actually needed this tool until now. And I must say—it’s brilliant.
+
+It’s an awesome real-world example of binary search in action—quickly narrowing down the exact commit that introduced a bug. A true hidden gem in Git!
+
+https://git-scm.com/docs/git-bisect

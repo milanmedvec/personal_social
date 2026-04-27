@@ -1,0 +1,1 @@
+Think Docker isolates you? Not always. Did you know that if your user is in the docker group, that group effectively has root-level power over the host?

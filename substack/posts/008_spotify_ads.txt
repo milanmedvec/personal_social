@@ -1,0 +1,93 @@
+Recently, while experimenting with DBus and media controls on Linux (in the same spirit as my previous Spotify automation experiments), I stumbled upon a simple idea:
+
+
+
+What if I don’t block Spotify ads…
+What if I just automatically mute them?
+
+No packet sniffing.
+No modified clients.
+Just observing metadata and reacting to it.
+
+
+
+The Script
+
+#!/bin/bash
+
+IN_ADD=0
+
+dbus-monitor "type='signal',path='/org/mpris/MediaPlayer2',interface='org.freedesktop.DBus.Properties'" | \
+grep  --line-buffered "mpris:trackid" -A 1 | \
+grep  --line-buffered '"/com/spotify.*"' -oE | \
+while read line; do
+    if echo $line | grep "/com/spotify/ad" 2>/dev/null 1>/dev/null
+    then
+        echo "spotify_ad_control: ad is playing"
+
+        if [[ $IN_ADD -eq 0 ]]
+        then
+            echo "spotify_ad_control: mute"
+            dunstify -u low -t 3000 "Spotify" "Ad detected!"
+            pactl set-sink-mute @DEFAULT_SINK@ true
+        fi
+
+        IN_ADD=1
+    else
+        echo "spotify_ad_control: ad is not playing"
+
+        if [[ $IN_ADD -eq 1 ]]
+        then
+            echo "spotify_ad_control: unmute"
+            dunstify -u low -t 3000 "Spotify" "Ad ended!"
+            pactl set-sink-mute @DEFAULT_SINK@ false
+        fi
+
+        IN_ADD=0
+    fi
+done
+
+How It Works (Quickly)
+
+Spotify on Linux exposes metadata via MPRIS over DBus.
+Ads have a different trackid path (/com/spotify/ad/...) than regular songs.
+
+The script:
+
+
+
+
+
+Listens to DBus property changes
+
+
+
+Detects when an ad starts
+
+
+
+Mutes the default audio sink
+
+
+
+Unmutes when music resumes
+
+
+
+Sends a desktop notification
+
+That’s it.
+
+
+
+⚠️ Experimental & Ethical Note
+
+This is purely an experimental Linux automation project — a way to explore DBus, MPRIS, and system scripting.
+
+It does not modify Spotify.
+It does not interfere with network traffic.
+It does not remove ads.
+
+If you want an ad-free experience, the straightforward and fair way is to pay for a Spotify Premium subscription. Supporting services you use is the right long-term solution.
+
+This script is about learning how Linux systems communicate — not about “beating” anything.

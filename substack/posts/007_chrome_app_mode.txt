@@ -1,0 +1,95 @@
+Chrome App Mode: Turning Websites into Dedicated Apps
+
+One simple flag changes how Chrome behaves:
+
+--app=<URL>
+
+When launched with --app=https://example.com, Chrome opens the page in application mode:
+
+
+
+
+
+No address bar
+
+
+
+No tabs
+
+
+
+No bookmarks bar
+
+
+
+No visible browser UI
+
+Just a clean, minimal window running a single web app.
+
+
+
+Why It’s Useful
+
+Modern workflows rely heavily on web apps:
+
+
+
+
+
+Slack
+
+
+
+Notion
+
+
+
+Internal dashboards
+
+
+
+AI tools
+
+
+
+Admin panels
+
+In a normal browser, they compete with everything else in your tab bar.
+
+In app mode, each tool becomes a standalone window — focused and isolated.
+
+If you’re using a tiling window manager (like i3), this becomes even more powerful. Each web app behaves like a native application that can be placed and managed independently.
+
+
+
+When It Makes Sense
+
+App mode works well for:
+
+
+
+
+
+Daily-use tools
+
+
+
+Monitoring dashboards
+
+
+
+Internal company systems
+
+
+
+AI interfaces you want separate from general browsing
+
+It reduces tab clutter, removes visual noise, and creates clearer boundaries between tasks.
+
+
+
+Final Note
+
+If you want to explore more Chrome/Chromium command-line switches, this is the best reference:
+
+https://peter.sh/experiments/chromium-command-line-switches/

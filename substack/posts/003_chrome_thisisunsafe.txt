@@ -1,0 +1,97 @@
+When using Google Chrome, you may encounter the “Your connection is not private” warning on websites with security issues, such as invalid SSL certificates or an HSTS (HTTP Strict Transport Security) mismatch. These errors indicate that the site’s security protocols are not properly configured. There is a lesser-known method that allows you to bypass this screen by typing “thisisunsafe” directly over the error page. This command enables users to continue to the site, even when there is no “Advanced” button to proceed.
+
+
+
+
+
+How to Test the “thisisunsafe” Trick
+
+To test the “thisisunsafe” trick yourself, you can set up a simple environment with a self-signed SSL certificate and a basic Nginx server. Follow these steps to simulate an insecure connection and see how the bypass works.
+
+
+
+
+
+Create the SSL Certificates
+First, generate a self-signed SSL certificate. Run the following commands to create a directory for your certificates and generate the SSL files:
+
+mkdir ssl
+openssl req -new -x509 -keyout ssl/server.key -out ssl/server.crt -days 365 -nodes -subj “/CN=localhost”
+
+
+
+
+
+
+These commands will create a server.crt certificate and a server.key private key for a site identified as “localhost.”
+
+
+
+Configure Nginx
+Next, set up a basic Nginx configuration that forces the use of HTTPS, even though the SSL certificate is self-signed and not trusted. Create an nginx.conf file with the following content:
+
+cat > nginx.conf <<EOF
+    server {
+        listen 80;
+        server_name localhost;
+        return 301 https://localhost;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name localhost;
+
+        ssl_certificate /etc/ssl/certs/server.crt;
+        ssl_certificate_key /etc/ssl/certs/server.key;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_ciphers HIGH:!aNULL:!MD5;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html;
+        }
+    }
+EOF
+
+
+
+
+
+
+This config ensures that any requests on HTTP (port 80) are redirected to HTTPS (port 443) and points to the self-signed certificate you created.
+
+
+
+Run the Nginx Server with Docker
+To run the server, you can use Docker, which will host Nginx with the SSL configuration. Run the following Docker command to start the server:
+
+docker run \
+    -p 80:80 \
+    -p 443:443 \
+    -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf \
+    -v $(pwd)/ssl:/etc/ssl/certs \
+    nginx
+
+
+
+
+
+
+This command will start the Nginx server, exposing both HTTP and HTTPS ports (80 and 443) and using the SSL certificates you created earlier.
+
+
+
+Test the “thisisunsafe” Trick
+Now, open Chrome and navigate to https://localhost
+
+
+
+Since the SSL certificate is self-signed and not trusted by the browser, you’ll see the “Your connection is not private” warning. At this point, type “thisisunsafe” directly over the error screen. Chrome will bypass the security warning, and you’ll be able to access the page despite the invalid SSL certificate.
+
+
+
+
+
+
+
+Thanks for reading! Subscribe for free to receive new posts and support my work.

@@ -1,0 +1,18 @@
+I’ve been thinking about information overload — not just in terms of volume, but in terms of novelty.
+
+How much of what we save is actually new?
+
+To explore this, I mapped my personal “region of interest.”
+
+I aggregated saved LinkedIn posts, articles, bookmarks, and newsletters, then:
+• decomposed the content into smaller semantic units
+• converted them into embeddings
+• clustered similar ideas
+• projected the structure into a 3D space
+
+The outcome was consistent and difficult to ignore:
+• A large proportion of content significantly overlaps
+• Many ideas recur across different sources with minimal variation
+• Truly novel information is comparatively sparse
+
+This suggests that the challenge is not only filtering *relevant* information, but identifying what is *genuinely additive* to what we already know.

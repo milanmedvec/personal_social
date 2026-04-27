@@ -1,0 +1,7 @@
+Quick one 👇
+
+Short video showing how I run Claude Code inside my minimal runc-based container manager.
+
+No Docker, no extra layers — just a clean, isolated environment per project.
+
+If you’re curious about lightweight container workflows, this might be useful.
